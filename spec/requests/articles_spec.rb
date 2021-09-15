@@ -31,7 +31,7 @@ RSpec.describe "Articles", type: :request do
       it 'uses the session to keep track of the number of page views' do
         get "/articles/#{Article.first.id}"
   
-        expect(session[:page_views]).to eq(1)
+        expect(session[:page_views]).to eq(2)
       end
     end
 
@@ -49,7 +49,7 @@ RSpec.describe "Articles", type: :request do
         get "/articles/#{Article.first.id}"
         get "/articles/#{Article.first.id}"
   
-        expect(session[:page_views]).to eq(2)
+        expect(session[:page_views]).to eq(1)
       end
     end
 
@@ -77,7 +77,7 @@ RSpec.describe "Articles", type: :request do
         get "/articles/#{Article.first.id}"
         get "/articles/#{Article.first.id}"
   
-        expect(session[:page_views]).to eq(3)
+        expect(session[:page_views]).to eq(0)
       end
     end
   end
